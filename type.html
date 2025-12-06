@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Try the Typeface</title>
+<style>
+    @font-face {
+        font-family: "Stardust";
+        src: url("asset/pattern-lock.otf") format("opentype");
+    }
+
+    body {
+        background: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        font-family: Arial, sans-serif; 
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-family: "Menlo", monospace;
+        font-weight: normal;
+        font-size: 20px;
+        letter-spacing: 2px;
+        opacity: 1;
+    }
+
+    textarea {
+        width: 80%;
+        height: 40vh;
+        font-size: 40px;
+        background: transparent;
+        border: transparent;
+        color: white;
+        padding: 20px;
+        font-family: 'Stardust', monospace;
+        outline: none;
+        resize: none;
+        letter-spacing: 3px;
+    }
+</style>
+</head>
+
+<body>
+    <h1>PATTERN LOCK</h1>
+    <textarea placeholder="type here..."></textarea>
+</body>
+</html>

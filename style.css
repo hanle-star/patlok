@@ -1,0 +1,246 @@
+/* ================================
+   Typeface
+   ================================ */
+
+@font-face {
+    font-family: "Stardust";
+    src: url("asset/pattern-lock.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ================================
+   Global layout
+   ================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #ffffff;
+    font-family: "Menlo", monospace;
+}
+
+h1 {
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 30px;
+    font-family: "Menlo", monospace;
+    font-weight: normal;
+    font-size: 30px;
+    letter-spacing: 2px;
+    opacity: 1;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 60px;
+    gap: 40px;
+}
+
+/* ================================
+    Hide scrollbars
+   ================================ */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================================
+   Left panel – type reveal
+   ================================ */
+
+.left-panel {
+    flex: 2;
+}
+
+.pangram-label {
+    font-family: "Menlo", monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: #aaaaaa;
+}
+
+.pangram-text {
+    font-family: "Stardust", monospace;
+    font-size: 60px;
+    line-height: 1.1;
+    letter-spacing: 0.15em;
+    white-space: pre-wrap;
+}
+
+/* ================================
+   Right panel – code + lock
+   ================================ */
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.code-label {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-right: 10px;
+}
+
+.code-label {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-right: 10px;
+}
+
+.code-value {
+    min-width: 120px;
+    text-align: right;
+}
+
+.status-msg {
+    min-height: 24px;
+    font-size: 14px;
+    color: #ff4d4d; /* default red when error */
+}
+
+/* Pattern lock sizing */
+svg.patternlock {
+    width: 350px;
+    height: 350px;
+    display: block;
+}
+
+/* ================================
+   PatternLock visuals
+   ================================ */
+
+svg.patternlock g.lock-lines line {
+    stroke-width: 1.5;
+    stroke: #ffffff;
+    opacity: 0.8;
+}
+
+svg.patternlock g.lock-dots circle {
+    stroke: transparent;
+    fill: #ffffff;
+    stroke-width: 13.5;
+}
+
+svg.patternlock g.lock-actives circle {
+    fill: #ffffff;
+    opacity: 0.25;
+    animation: lock-activate-dot .15s 0s ease 1;
+    transform-origin: center;
+}
+
+svg.patternlock.success g.lock-actives circle {
+    fill: #00ff7f;
+}
+
+svg.patternlock.error g.lock-actives circle {
+    fill: #ff4d4d;
+}
+
+@keyframes lock-activate-dot {
+    0%   { transform: scale(0); }
+    75%  { transform: scale(1.1); }
+    100% { transform: scale(1.0); }
+}
+
+/* Responsive-ish */
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+    }
+
+    .left-panel, .right-panel {
+        flex: unset;
+        width: 100%;
+    }
+
+    .pangram-text {
+        font-size: 40px;
+    }
+
+    svg.patternlock {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+/* ================================
+   REVEAL PASSWORD button
+   ================================ */
+
+.skip-button {
+    background: transparent;
+    border: 1px solid #888;
+    color: #ddd;
+    padding: 8px 16px;
+    font-family: "Menlo", monospace;
+    position: absolute;
+    margin-left: 88%;
+    margin-top: -58%;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+}
+
+.skip-button:hover {
+    border-color: white;
+    color: white;
+}
+
+/* ================================
+   TRY THE FONT button
+   ================================ */
+
+.next-button {
+    background: transparent;
+    border: 1px solid #888;
+    color: #ddd;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: "Menlo", monospace;
+    position: absolute;
+    margin-left: 88%;
+    margin-top: -55.5%;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+
+.next-button:hover {
+    border-color: white;
+    color: white;
+}
+
+/* ================================
+   Code Blink Animation
+   ================================ */
+
+@keyframes blinkCode {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.code-label,
+.code-value {
+    animation: blinkCode 1.4s infinite ease-in-out;
+}
+
